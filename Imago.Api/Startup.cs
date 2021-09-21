@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Imago.BusinessLogic.DomainServices;
+using Imago.BusinessLogic.Interfaces;
+using Imago.DataAccess.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Imago.Api
@@ -26,12 +23,11 @@ namespace Imago.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
+            services.AddDbContext<ImagoContext>(options => options.UseInMemoryDatabase(databaseName: "Imago"));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Imago.Api", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Imago.Api", Version = "v1"}); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
