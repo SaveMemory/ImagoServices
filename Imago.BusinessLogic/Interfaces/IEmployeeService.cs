@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Imago.Thrash.Dto;
 
 namespace Imago.BusinessLogic.Interfaces
 {
     public interface IEmployeeService
     {
-        IEnumerable<EmployeeDto> GetAllHiredForUser(Guid id);
+        Task<IEnumerable<EmployeeDto>> GetAllHiredForUser(Guid userId);
     }
 }

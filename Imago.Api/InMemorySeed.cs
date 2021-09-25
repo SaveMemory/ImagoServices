@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Imago.BusinessLogic.DomainModels;
+using Imago.BusinessCore.DomainModels;
 using Imago.DataAccess.Database;
 
 namespace Imago.Api

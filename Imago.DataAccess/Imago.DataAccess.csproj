@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Imago.BusinessLogic\Imago.BusinessLogic.csproj" />
+      <ProjectReference Include="..\Imago.BusinessCore\Imago.BusinessCore.csproj" />
     </ItemGroup>
 
 </Project>

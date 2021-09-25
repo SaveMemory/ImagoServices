@@ -1,18 +1,18 @@
 using System;
 
-namespace Imago.BusinessLogic.DomainModels
+namespace Imago.BusinessCore.DomainModels
 {
     public class Employee
     {
-        public Guid Guid { get; set; }
+        public Guid Id { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
         public int Workforce { get; set; }
         public Guid UserId { get; set; }
 
-        public Employee(Guid guid, string forename, string surname, int workforce)
+        public Employee(Guid id, string forename, string surname, int workforce)
         {
-            Guid = guid;
+            Id = id;
             Forename = forename;
             Surname = surname;
             Workforce = workforce;

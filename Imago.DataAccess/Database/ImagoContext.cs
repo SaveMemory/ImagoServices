@@ -1,4 +1,4 @@
-using Imago.BusinessLogic.DomainModels;
+using Imago.BusinessCore.DomainModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Imago.DataAccess.Database

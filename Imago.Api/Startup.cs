@@ -1,6 +1,8 @@
 using Imago.BusinessLogic.DomainServices;
 using Imago.BusinessLogic.Interfaces;
 using Imago.DataAccess.Database;
+using Imago.DataAccess.Interfaces;
+using Imago.DataAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +25,9 @@ namespace Imago.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             services.AddDbContext<ImagoContext>(options => options.UseInMemoryDatabase(databaseName: "Imago"));
             services.AddControllers();
