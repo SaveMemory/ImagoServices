@@ -1,3 +1,4 @@
+using System;
 using Imago.BusinessLogic.DomainServices;
 using Imago.BusinessLogic.Interfaces;
 using Imago.DataAccess.Database;
@@ -35,7 +36,7 @@ namespace Imago.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -44,6 +45,11 @@ namespace Imago.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Imago.Api v1"));
             }
 
+            using (var context = new ImagoContext(serviceProvider.GetRequiredService<DbContextOptions<ImagoContext>>()))
+            {
+                InMemorySeed.CreateSeed(context);
+            }
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

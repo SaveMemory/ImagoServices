@@ -24,5 +24,13 @@ namespace Imago.BusinessLogic.DomainServices
             var hiredEmployees = await _employeeRepository.GetAllHiredForUser(userId);
             return _mapper.Map<IEnumerable<EmployeeDto>>(hiredEmployees);
         }
+
+        public Task<IEnumerable<EmployeeDto>> GetAllEmployableForUser(Guid userId)
+        {
+            var employableForUser = new List<EmployeeDto>()
+            {
+                new EmployeeDto()
+            };
+        }
     }
 }

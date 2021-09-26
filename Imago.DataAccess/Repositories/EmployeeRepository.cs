@@ -20,7 +20,7 @@ namespace Imago.DataAccess.Repositories
         
         public async Task<IEnumerable<Employee>> GetAllHiredForUser(Guid userId)
         {
-            return await _context.Employees.Where(x => x.Id == userId).ToListAsync();
+            return await _context.Employees.Where(x => x.UserId == userId).ToListAsync();
         }
     }
 }

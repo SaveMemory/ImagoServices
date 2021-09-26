@@ -21,5 +21,14 @@ namespace Imago.Api.Controllers
             
             return Ok(_employeeService.GetAllHiredForUser(userId));
         }
+        
+        [HttpGet("{userId}")]
+        public IActionResult GetAllEmployableForUser(Guid userId)
+        {
+            if (!ModelState.IsValid)
+                BadRequest();
+            
+            return Ok(_employeeService.GetAllEmployableForUser(userId));
+        }
     }
 }

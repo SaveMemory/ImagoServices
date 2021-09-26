@@ -10,12 +10,13 @@ namespace Imago.BusinessCore.DomainModels
         public int Workforce { get; set; }
         public Guid UserId { get; set; }
 
-        public Employee(Guid id, string forename, string surname, int workforce)
+        public Employee(Guid id, string forename, string surname, int workforce, Guid userId)
         {
             Id = id;
             Forename = forename;
             Surname = surname;
             Workforce = workforce;
+            UserId = userId;
         }
     }
 }
