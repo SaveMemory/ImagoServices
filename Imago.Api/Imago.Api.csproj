@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Imago.BusinessCore\Imago.BusinessCore.csproj" />
+    <ProjectReference Include="..\Imago.BusinessLogic\Imago.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Imago.DataAccess\Imago.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

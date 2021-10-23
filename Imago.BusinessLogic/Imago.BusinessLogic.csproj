@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Imago.BusinessCore\Imago.BusinessCore.csproj" />
+      <ProjectReference Include="..\Imago.Thrash\Imago.Thrash.csproj" />
+      <ProjectReference Include="..\Imago.DataAccess\Imago.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Candidate\" />
+    </ItemGroup>
+
+</Project>
