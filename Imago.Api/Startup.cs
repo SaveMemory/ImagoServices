@@ -1,9 +1,9 @@
 using System;
-using Imago.BusinessLogic.DomainServices;
-using Imago.BusinessLogic.Interfaces;
+using Imago.BusinessLogic.Employee.Read;
+using Imago.BusinessLogic.Employee.Read.Abstract;
 using Imago.DataAccess.Database;
-using Imago.DataAccess.Interfaces;
-using Imago.DataAccess.Repositories;
+using Imago.DataAccess.Repositories.Read;
+using Imago.DataAccess.Repositories.Read.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +27,14 @@ namespace Imago.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddScoped<IEmployeeService, EmployeeService>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            #region Read
+
+            services.AddScoped<IEmployeeReadService, EmployeeReadService>();
+            services.AddScoped<IEmployeeReadRepository, EmployeeReadRepository>();
+
+            #endregion
+
 
             services.AddDbContext<ImagoContext>(options => options.UseInMemoryDatabase(databaseName: "Imago"));
             services.AddControllers();

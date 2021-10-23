@@ -1,22 +1,11 @@
-using System;
+﻿using System;
 
 namespace Imago.BusinessCore.DomainModels
 {
-    public class Employee
+    public class Employee : Worker
     {
-        public Guid Id { get; set; }
-        public string Forename { get; set; }
-        public string Surname { get; set; }
-        public int Workforce { get; set; }
-        public Guid UserId { get; set; }
-
-        public Employee(Guid id, string forename, string surname, int workforce, Guid userId)
+        public Employee(Guid id, string forename, string surname, int workforce, Guid userId) : base(id, forename, surname, workforce, userId)
         {
-            Id = id;
-            Forename = forename;
-            Surname = surname;
-            Workforce = workforce;
-            UserId = userId;
         }
     }
 }

@@ -1,34 +1,28 @@
 using System;
-using Imago.BusinessLogic.Interfaces;
+using System.Threading.Tasks;
+using Imago.BusinessLogic.Employee.Read.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imago.Api.Controllers
 {
     public class EmployeesController : ApiController
     {
-        private readonly IEmployeeService _employeeService;
+        private readonly IEmployeeReadService _employeeService;
 
-        public EmployeesController(IEmployeeService employeeService)
+        public EmployeesController(IEmployeeReadService employeeService)
         {
             _employeeService = employeeService;
         }
 
         [HttpGet("{userId}")]
-        public IActionResult GetAllHiredForUser(Guid userId)
+        public async Task<IActionResult> GetAllEmployeesForUserAsync(Guid userId)
         {
             if (!ModelState.IsValid)
                 BadRequest();
-            
-            return Ok(_employeeService.GetAllHiredForUser(userId));
-        }
-        
-        [HttpGet("{userId}")]
-        public IActionResult GetAllEmployableForUser(Guid userId)
-        {
-            if (!ModelState.IsValid)
-                BadRequest();
-            
-            return Ok(_employeeService.GetAllEmployableForUser(userId));
+
+            var employees = await _employeeService.GetAllEmployeesForUserAsync(userId);
+
+            return Ok(employees);
         }
     }
 }

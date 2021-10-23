@@ -4,21 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Imago.BusinessCore.DomainModels;
 using Imago.DataAccess.Database;
-using Imago.DataAccess.Interfaces;
+using Imago.DataAccess.Repositories.Read.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace Imago.DataAccess.Repositories
+namespace Imago.DataAccess.Repositories.Read
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeReadRepository : IEmployeeReadRepository
     {
         private readonly ImagoContext _context;
 
-        public EmployeeRepository(ImagoContext context)
+        public EmployeeReadRepository(ImagoContext context)
         {
             _context = context;
         }
         
-        public async Task<IEnumerable<Employee>> GetAllHiredForUser(Guid userId)
+        public async Task<IEnumerable<Employee>> GetAllEmployeesForUserAsync(Guid userId)
         {
             return await _context.Employees.Where(x => x.UserId == userId).ToListAsync();
         }
