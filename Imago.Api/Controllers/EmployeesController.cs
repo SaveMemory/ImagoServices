@@ -17,9 +17,6 @@ namespace Imago.Api.Controllers
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetAllEmployeesForUserAsync(Guid userId)
         {
-            if (!ModelState.IsValid)
-                BadRequest();
-
             var employees = await _employeeService.GetAllEmployeesForUserAsync(userId);
 
             return Ok(employees);
