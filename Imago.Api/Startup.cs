@@ -36,6 +36,12 @@ namespace Imago.Api
             #endregion
 
 
+            services.AddCors(x => x.AddPolicy("ImagoCorsPolicy", builder =>
+            {
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+            }));
+
+
             services.AddDbContext<ImagoContext>(options => options.UseInMemoryDatabase(databaseName: "Imago"));
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Imago.Api", Version = "v1"}); });
@@ -59,6 +65,8 @@ namespace Imago.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("ImagoCorsPolicy");
 
             app.UseAuthorization();
 
